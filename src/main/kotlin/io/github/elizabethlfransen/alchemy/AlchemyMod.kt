@@ -1,6 +1,6 @@
-package io.github.elizabethlfransen
+package io.github.elizabethlfransen.alchemy
 
-import io.github.elizabethlfransen.AlchemyMod.MOD_ID
+import io.github.elizabethlfransen.alchemy.AlchemyMod.MOD_ID
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import org.apache.logging.log4j.LogManager
@@ -12,7 +12,7 @@ object AlchemyMod {
     val logger = LogManager.getLogger()
 
     init {
-        MOD_BUS.addListener(::setup)
+        MOD_BUS.addListener(AlchemyMod::setup)
     }
 
     private fun setup(event: FMLCommonSetupEvent) {
