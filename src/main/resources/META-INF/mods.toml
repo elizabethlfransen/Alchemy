@@ -3,26 +3,26 @@ modLoader="kotlinforforge"
 # Make sure this is set to the appropriate version range
 loaderVersion="[3,)" # Require at least 3.x
 # License is REQUIRED after 1.16
-license='LGPL'
+license='MIT'
 
 [[mods]]
-modId="examplemod"
+modId="alchemy"
 version="${file.jarVersion}"
-displayName="ExampleMod"
-credits="The ExampleMod dev team"
-authors="ExampleModAuthor"
+displayName="Alchemy"
+credits="Forge for creating an amazing loading. KotlinForForge team for letting me use an amazing language with my mod"
+authors="ElizabethLFransen, LizIsNotInting"
 description='''
-Example mod that uses Kotlin for Forge.
+A alchemy / tech mod for transmuting one item to another
 '''
-[[dependencies.examplemod]]
+[[dependencies.alchemy]]
     modId="forge"
     mandatory=true
     versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.examplemod]]
+[[dependencies.alchemy]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1]"
+    versionRange="[1.18.2]"
     ordering="NONE"
     side="BOTH"
