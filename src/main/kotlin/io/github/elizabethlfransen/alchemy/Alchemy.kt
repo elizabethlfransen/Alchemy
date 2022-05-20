@@ -1,10 +1,13 @@
 package io.github.elizabethlfransen.alchemy
 
 import io.github.elizabethlfransen.alchemy.block.ModBlocks
+import io.github.elizabethlfransen.alchemy.data.AlchemyEnglishProvider
+import io.github.elizabethlfransen.alchemy.fluid.ModFluids
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -30,10 +33,12 @@ object Alchemy {
 
         // Register the KDeferredRegister to the mod-specific event bus
         ModBlocks.REGISTRY.register(MOD_BUS)
+        ModFluids.FLUIDS.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
                 MOD_BUS.addListener(Alchemy::onClientSetup)
+                MOD_BUS.addListener(Alchemy::onGatherData)
                 Minecraft.getInstance()
             },
             serverTarget = {
@@ -42,6 +47,10 @@ object Alchemy {
             })
 
         println(obj)
+    }
+
+    private fun onGatherData(event: GatherDataEvent) {
+        event.generator.addProvider(AlchemyEnglishProvider(event.generator, ID, "en_us"))
     }
 
     /**
